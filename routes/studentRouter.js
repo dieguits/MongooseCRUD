@@ -11,6 +11,14 @@ router.get('/', function (req, res) {
         res.json(students);
     });
 });
+router.get('/test', function (req, res) {
+    Student.find({}, function (err, students) {
+        if (err) {
+            res.end("some error occurred");
+        }
+        res.json(students);
+    });
+});
 router.post('/', function (req, res) {
     var student = new Student(req.body);
     student.save(function (err, students) { return res.json(student); });
